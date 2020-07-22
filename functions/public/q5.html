@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jcluo Avl Test</title>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app" class="container">
+            <h2>5. 使用者答案及題目結果</h2>
+            <div class="row" v-if="user">
+                <div class="col-auto">
+                    <button class="btn btn-primary" :disabled="test.start" @click.prevent="onStart">Start Test</button>
+                </div>
+                <div class="col">
+                    <div class="alert alert-danger" v-show="errorMessage">{{ errorMessage }}</div>
+                </div>
+            </div>
+            <div class="row" v-else>
+                <div class="col-auto">
+                    <button class="btn btn-primary" @click.prevent="onLogin">Login</button>
+                </div>
+            </div>
+            <div class="card pa-2" v-show="test.done">
+                <h4>Result</h4>
+                <p>Correct: {{ test.correct }}</p>
+                <p>Completed: {{ test.total }}</p>
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        role="progressbar"
+                        :style="{width: correctPercent +'%'}"
+                        :aria-valuenow="correctPercent"
+                    >
+                        {{ correctPercent }}%
+                    </div>
+                </div>
+            </div>
+            <div class="card pa-2" v-show="problem.id">
+                <h4>{{problem.id }} - {{ problem.title }}</h4>
+                <div>{{ problem.text }}</div>
+
+                <div class="row">
+                    <div class="col-auto">
+                        <input class="form-control" type="text" v-model="input.value" />
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" @click="onAnswerNext">Next</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" @click="onAnswerResult">Result</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/run/web/js/q5.js"></script>
+    </body>
+</html>

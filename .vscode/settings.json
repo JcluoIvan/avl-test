@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/lib": true
+    },
+    "liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/run",
+        "proxyUri": "http://127.0.0.1:5001/jcluo-avl-test/us-central1/run"
+    },
+    "liveServer.settings.root": "/functions/public"
+}

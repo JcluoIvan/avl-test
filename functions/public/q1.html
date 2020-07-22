@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jcluo Avl Test</title>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="q1-app" class="container">
+            <h2>1. 寄 Email 電子郵件 (必答題)</h2>
+            <form class="form" @submit.prevent="onSend">
+                <div class="form-group">
+                    <div class="d-flex no-gutters justify-content-between">
+                        <label>Subject</label>
+                        <small>{{ input.subject.length }} / {{ maxSubject}} </small>
+                    </div>
+                    <input class="form-control" v-model="input.subject" />
+                </div>
+                <div class="form-group">
+                    <label>To</label>
+                    <input class="form-control" v-model="input.to" />
+                </div>
+                <div class="form-group">
+                    <div class="d-flex no-gutters justify-content-between">
+                        <label>Text</label>
+                        <small>{{ input.text.length }} / {{ maxText }}</small>
+                    </div>
+                    <textarea cols="30" rows="10" class="form-control" v-model="input.text"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="alert"
+                            :class="response.success ? 'alert-success' : 'alert-danger'"
+                            v-show="response.message"
+                            v-text="response.message"
+                        ></div>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" :disabled="sending">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="/run/web/js/q1.js"></script>
+    </body>
+</html>
